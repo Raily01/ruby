@@ -1,0 +1,37 @@
+class OurSeq
+  def initialize
+    puts 'u maked seq'
+  end
+  def next(a)
+    a = a.to_s
+    k = 1
+    last = a.slice(0)
+    res = ''
+    for i in (1..a.length).step(1) do
+      if last == a.slice(i)
+        k += 1
+      else
+        res += k.to_s + last
+        k = 1
+      end
+      last = a.slice(i)
+    end 
+    #res += k.to_s + last
+    return res
+  end
+  def puts_seq_til(til)
+    cur = 1
+    puts 1
+    for i in (1..til).step(1) do
+      puts OurSeq.next(cur)
+      cur = OurSeq.next(cur)
+    end
+  end
+end
+w = OurSeq.new
+w.puts_seq_til(6)
+
+'''OR'''
+ def look_and_say_regexp
+    self.gsub(/(.)\1*/) { |match| "#{match.size}#{match[0]}" }
+ end
